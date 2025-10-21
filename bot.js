@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
+const http = require('http');
 require('dotenv').config();
 
 // Create a new client instance with minimal intents
@@ -9,11 +10,11 @@ const client = new Client({
 });
 
 // When the client is ready, run this code (only once)
-client.once('ready', () => {
+client.once('clientReady', () => {
     console.log(`✅ Bot is online! Logged in as ${client.user.tag}`);
     
     // Set bot activity to show it's online
-    client.user.setActivity('Personnel, ensuring safety', { type: ActivityType.Watching });
+    client.user.setActivity('24/7 Uptime', { type: ActivityType.Watching });
 });
 
 // Simple uptime logging
@@ -35,6 +36,17 @@ process.on('unhandledRejection', error => {
     console.error('Unhandled promise rejection:', error);
 });
 
+// Create a simple HTTP server for Render
+const server = http.createServer((req, res) => {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('Discord Bot is running!');
+});
+
+// Start the server
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+    console.log(`🌐 HTTP server running on port ${PORT}`);
+});
+
 // Login to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
-
