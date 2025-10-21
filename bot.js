@@ -14,7 +14,7 @@ client.once('clientReady', () => {
     console.log(`✅ Bot is online! Logged in as ${client.user.tag}`);
     
     // Set bot activity to show it's online
-    client.user.setActivity('24/7 Uptime', { type: ActivityType.Watching });
+    client.user.setActivity('personnel & ensuring safety', { type: ActivityType.Watching });
 });
 
 // Simple uptime logging
@@ -50,3 +50,4 @@ server.listen(PORT, () => {
 
 // Login to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
+
