@@ -1,12 +1,10 @@
 const { Client, GatewayIntentBits, ActivityType } = require('discord.js');
 require('dotenv').config();
 
-// Create a new client instance
+// Create a new client instance with minimal intents
 const client = new Client({
     intents: [
-        GatewayIntentBits.Guilds,
-        GatewayIntentBits.GuildMessages,
-        GatewayIntentBits.MessageContent
+        GatewayIntentBits.Guilds
     ]
 });
 
@@ -18,28 +16,15 @@ client.once('ready', () => {
     client.user.setActivity('24/7 Uptime', { type: ActivityType.Watching });
 });
 
-// Basic ping command
-client.on('messageCreate', message => {
-    if (message.author.bot) return;
+// Simple uptime logging
+setInterval(() => {
+    const uptime = process.uptime();
+    const days = Math.floor(uptime / 86400);
+    const hours = Math.floor((uptime % 86400) / 3600);
+    const minutes = Math.floor((uptime % 3600) / 60);
     
-    if (message.content === '!ping') {
-        message.reply(`🏓 Pong! Latency: ${client.ws.ping}ms`);
-    }
-    
-    if (message.content === '!status') {
-        const uptime = process.uptime();
-        const days = Math.floor(uptime / 86400);
-        const hours = Math.floor((uptime % 86400) / 3600);
-        const minutes = Math.floor((uptime % 3600) / 60);
-        const seconds = Math.floor(uptime % 60);
-        
-        message.reply(`🤖 **Bot Status**\n⏱️ Uptime: ${days}d ${hours}h ${minutes}m ${seconds}s\n💓 Ping: ${client.ws.ping}ms`);
-    }
-    
-    if (message.content === '!help') {
-        message.reply(`📋 **Available Commands:**\n\`!ping\` - Check bot latency\n\`!status\` - Show bot uptime and status\n\`!help\` - Show this help message`);
-    }
-});
+    console.log(`🤖 Bot uptime: ${days}d ${hours}h ${minutes}m`);
+}, 300000); // Log every 5 minutes
 
 // Handle errors
 client.on('error', error => {

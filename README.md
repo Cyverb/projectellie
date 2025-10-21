@@ -4,10 +4,10 @@ A simple Discord bot designed to stay online 24/7 for uptime monitoring purposes
 
 ## Features
 
-- Basic ping/pong command
-- Uptime status tracking
-- Help command
 - 24/7 online status
+- Uptime logging every 5 minutes
+- Minimal resource usage
+- Perfect for uptime monitoring
 
 ## Setup
 
@@ -16,10 +16,12 @@ A simple Discord bot designed to stay online 24/7 for uptime monitoring purposes
 1. Go to [Discord Developer Portal](https://discord.com/developers/applications)
 2. Click "New Application" and give it a name
 3. Go to "Bot" section and click "Add Bot"
-4. Copy the bot token
-5. Go to "OAuth2" > "URL Generator"
-6. Select "bot" scope and "Send Messages" permission
-7. Use the generated URL to invite bot to your server
+4. **IMPORTANT**: In the Bot section, scroll down to "Privileged Gateway Intents"
+5. **Enable only "Server Members Intent"** (or leave all disabled for minimal setup)
+6. Copy the bot token
+7. Go to "OAuth2" > "URL Generator"
+8. Select "bot" scope and "Send Messages" permission
+9. Use the generated URL to invite bot to your server
 
 ### 2. Local Development
 
@@ -53,11 +55,13 @@ A simple Discord bot designed to stay online 24/7 for uptime monitoring purposes
 5. Set monitoring interval (5 minutes for free plan)
 6. The bot will stay online 24/7!
 
-## Commands
+## Monitoring
 
-- `!ping` - Check bot latency
-- `!status` - Show bot uptime and status  
-- `!help` - Show available commands
+The bot will:
+- Stay online 24/7
+- Log uptime every 5 minutes to console
+- Show "Watching 24/7 Uptime" as its activity
+- Use minimal resources
 
 ## Notes
 
