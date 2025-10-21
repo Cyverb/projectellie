@@ -13,7 +13,7 @@ client.once('ready', () => {
     console.log(`✅ Bot is online! Logged in as ${client.user.tag}`);
     
     // Set bot activity to show it's online
-    client.user.setActivity('24/7 Uptime', { type: ActivityType.Watching });
+    client.user.setActivity('Personnel, ensuring safety', { type: ActivityType.Watching });
 });
 
 // Simple uptime logging
@@ -37,3 +37,4 @@ process.on('unhandledRejection', error => {
 
 // Login to Discord with your client's token
 client.login(process.env.DISCORD_TOKEN);
+
